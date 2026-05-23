@@ -1,10 +1,27 @@
-import { View, Text, Button } from 'react-native';
 
-export default function APP() {
-  return (
-    <View>
-      <Text>Gioco della Sfortuna</Text>
-      <Button title="Inizia Partita" />
-    </View>
-  );
+import React, { useState } from 'react';
+
+import HomeScreen from './Screens/HomeScreen';
+import GameScreen from './Screens/GameScreen';
+
+export default function App() {
+
+  const [screen, setScreen] = useState('home');
+
+
+
+  if (screen === 'home') {
+
+    return (
+      <HomeScreen
+        cambiaSchermata={() => setScreen('game')}
+      />
+    );
+
+  }
+
+
+
+  return <GameScreen />;
+
 }
