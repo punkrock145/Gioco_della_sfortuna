@@ -149,159 +149,229 @@ image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_K
     sfortuna: 54,
   image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
   },
-  {
-    id: 26,
-    title: "Il cantante entra troppo presto",
-    sfortuna: 56,
-image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+ {
+  id: 26,
+  title: "Ti cade la chitarra dal palco",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 27,
-    title: "La batteria perde ritmo",
-    sfortuna: 58,
-  image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
-  },
-  {
-    id: 28,
-    title: "Il mixer si spegne",
-    sfortuna: 60,
-    image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
-  },
-  {
-    id: 29,
-    title: "Vomiti sul palco",
-    sfortuna: 62,
-   image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
-  },
-  {
-    id: 30,
-    title: "Rompi la chitarra accidentalmente",
-    sfortuna: 64,
-    image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
-  },
-  {
-    id: 31,
-    title: "Ti stacchi corrente durante live",
-    sfortuna: 66,
- image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
-  },
-  {
-    id: 32,
-    title: "Il pubblico ride di te",
-    sfortuna: 68,
-   
- image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 56
+},
 
+{
+  id: 27,
+  title: "La folla ti lancia scarpe",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 33,
-    title: "Canti stonatissimo",
-    sfortuna: 70,
- image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 58
+},
 
+{
+  id: 28,
+  title: "L’amplificatore prende fuoco",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 34,
-    title: "Luci del palco spente",
-    sfortuna: 72,
-    image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 60
+},
+
+{
+  id: 29,
+  title: "Il microfono fa un fischio fortissimo",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 35,
-    title: "Il tuo in-ear smette di funzionare",
-    sfortuna: 74,
-   image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 62
+},
+
+{
+  id: 30,
+  title: "Dimentichi il nome della tua band",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 36,
-    title: "Il pubblico ti insulta",
-    sfortuna: 76,
-    image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 64
+},
+
+{
+  id: 31,
+  title: "Il pubblico urla 'scendi dal palco",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 37,
-    title: "Perdi la voce sul palco",
-    sfortuna: 78,
-   image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 66
+},
+
+{
+  id: 32,
+  title: "Il pubblico apre Spotify durante il tuo concerto",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 38,
-    title: "La security ti butta giù dal palco",
-    sfortuna: 80,
-   image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 68
+},
+
+{
+  id: 33,
+  title: "La tua chitarra fa il suono di una sveglia",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 39,
-    title: "Nessuno si presenta al concerto",
-    sfortuna: 82,
-  image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 70
+},
+
+{
+  id: 34,
+  title: "Il palco gira e inizi a cadere mentre canti",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 40,
-    title: "Il locale prende fuoco",
-    sfortuna: 84,
- image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 72
+},
+
+{
+  id: 35,
+  title: "Il DJ spegne tutto per errore",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 41,
-    title: "La tua voce cracka davanti a tutti",
-    sfortuna: 86,
-  image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 74
+},
+
+{
+  id: 36,
+  title: "Ti si piega in due il jack della chitarra",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 42,
-    title: "Distruggi accidentalmente il mixer",
-    sfortuna: 88,
-  image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 76
+},
+
+{
+  id: 37,
+  title: "Il pubblico resta in silenzio totale",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 43,
-    title: "Il palco esplode con i fuochi d'artificio",
-    sfortuna: 90,
-     image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 78
+},
+
+{
+  id: 38,
+  title: "Il palco crolla ",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 44,
-    title: "Ti rompi una gamba durante il live",
-    sfortuna: 92,
- image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 80
+},
+
+{
+  id: 39,
+  title: "Vomiti sul palco live",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 45,
-    title: "Ti tirano un telefono in faccia",
-    sfortuna: 94,
-     image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 82
+},
+{
+  id: 40,
+  title: "Il tuo playback fa partire Peppa Pig live",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 46,
-    title: "Tutti registrano il tuo fallimento",
-    sfortuna: 95,
-     image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 84
+},
+
+{
+  id: 41,
+  title: "Ti dimentichi il testo e inventi parole senza senso",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 47,
-    title: "Diventi meme mondiale",
-    sfortuna: 96,
-   image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 86
+},
+
+{
+  id: 42,
+  title: "La tua voce diventa acutissima davanti a tutti",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 48,
-    title: "Cadi dal palco in diretta mondiale",
-    sfortuna: 97,
-    image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 88
+},
+
+{
+  id: 43,
+  title: "Il pubblico lascia il concerto per andare al bar",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 49,
-    title: "Prendi scossa dal microfono",
-    sfortuna: 98,
- image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
+  sfortuna: 90
+},
+
+{
+  id: 44,
+  title: "Ti rompi un dente col microfono",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
-  {
-    id: 50,
-    title: "Ti licenziano dalla band dopo il concerto",
-    sfortuna: 100,
-    image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png" }
-  }
+  sfortuna: 92
+},
+
+{
+  id: 45,
+  title: "La sicurezza ti scambia per un fan",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
+  },
+  sfortuna: 94
+},
+
+{
+  id: 46,
+  title: "Si spegne tutta la corrente",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
+  },
+  sfortuna: 96
+},
+
+{
+  id: 47,
+  title: "Il pubblico ti fischia per tutto il live",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
+  },
+  sfortuna: 98
+},
+
+{
+  id: 48,
+  title: "La tua chitarra esplode durante l’assolo",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
+  },
+  sfortuna: 100
+},
+
+{
+  id: 49,
+  title: "Cadi dal palco davanti a tutti",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
+  },
+  sfortuna: 100
+},
+
+{
+  id: 50,
+  title: "i membri della  band ti picchiano",
+  image: {
+    uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
+  },
+  sfortuna: 100
+},
 ];
 
 export default cardsData;
