@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import {
   View,
   Text,
-  StyleSheet,
+ StyleSheet,
   Image,
   ScrollView,
   TouchableOpacity
@@ -10,7 +11,8 @@ import {
 
 import datiCarte from '../Data/CardsData';
 
-export default function SchermoGioco() {
+export default function GameScreen({ vaiEndScreen }) {
+
 
   const [carteGiocatore, setCarteGiocatore] = useState(() => {
 
@@ -18,36 +20,65 @@ export default function SchermoGioco() {
 
     mescolate.sort(() => Math.random() - 0.5);
 
-    let carteCasuali = mescolate.slice(0, 3);
+    let iniziali = mescolate.slice(0, 3);
 
-    carteCasuali.sort((a, b) => a.sfortuna - b.sfortuna);
+    iniziali.sort((a, b) => a.sfortuna - b.sfortuna);
 
-    return carteCasuali;
-
-  });
-
-  const [cartaRound] = useState(() => {
-
-    let carteDisponibili = datiCarte.filter((carta) => {
-
-      return !carteGiocatore.some((c) => c.id === carta.id);
-
-    });
-
-    carteDisponibili.sort(() => Math.random() - 0.5);
-
-    return carteDisponibili[0];
+    return iniziali;
 
   });
+
+
+  const [cartaRound, setCartaRound] = useState(null);
 
   const [messaggio, setMessaggio] = useState("");
 
   const [errori, setErrori] = useState(0);
 
+  const [partitaFinita, setPartitaFinita] = useState(false);
+
+  const [vittoria, setVittoria] = useState(false);
+
   const dbsm_temp = "partita";
 
 
+  useEffect(() => {
+
+    generaNuovaCarta();
+
+  }, []);
+
+
+
+
+
+
+  function generaNuovaCarta() {
+
+    let disponibili = datiCarte.filter((carta) => {
+
+      let giaUsata = carteGiocatore.some((c) => c.id === carta.id);
+
+      return !giaUsata;
+
+    });
+
+
+
+
+    disponibili.sort(() => Math.random() - 0.5);
+
+    setCartaRound(disponibili[0]);
+
+  }
+
   function sceltaPosizione(posizioneScelta) {
+
+    if (partitaFinita) {
+
+      return;
+
+    }
 
     let posizioneCorretta = 0;
 
@@ -66,13 +97,51 @@ export default function SchermoGioco() {
 
       setMessaggio("Hai indovinato!");
 
+      let nuoveCarte = [...carteGiocatore];
+
+      nuoveCarte.splice(posizioneScelta, 0, cartaRound);
+
+      nuoveCarte.sort((a, b) => a.sfortuna - b.sfortuna);
+
+      setCarteGiocatore(nuoveCarte);
+
+
+      if (nuoveCarte.length === 6) {
+
+        vaiEndScreen(true);
+return;
+
+     
+
+      }
+
+
+
+
+      generaNuovaCarta();
+
     }
+
 
     else {
 
+      let nuoviErrori = errori + 1;
+
+      setErrori(nuoviErrori);
+
       setMessaggio("Hai sbagliato!");
 
-      setErrori(errori + 1);
+      if (nuoviErrori === 3) {
+
+  vaiEndScreen(false);
+
+
+        return;
+
+      }
+
+
+      generaNuovaCarta();
 
     }
 
@@ -86,49 +155,79 @@ export default function SchermoGioco() {
         Gioco della Sfortuna
       </Text>
 
+
+
+
       <Text style={stili.messaggio}>
         {messaggio}
       </Text>
 
+
+
+
       <Text style={stili.errori}>
-        Errori: {errori}
+        Errori: {errori}/3
       </Text>
 
 
-      <Text style={stili.sottotitolo}>
-        Nuova Carta
+
+
+      <Text style={stili.carteTotali}>
+        Carte: {carteGiocatore.length}/6
       </Text>
 
+      {
+        !partitaFinita && cartaRound && (
 
-      <View style={stili.cartaRound}>
+          <>
 
-        <Image
-          source={cartaRound.image}
-          style={stili.immagine}
-        />
+            <Text style={stili.sottotitolo}>
+              Nuova Carta
+            </Text>
 
-        <Text style={stili.titoloCarta}>
-          {cartaRound.title}
-        </Text>
 
-      </View>
+
+
+
+            <View style={stili.cartaRound}>
+
+              <Image
+                source={cartaRound.image}
+                style={stili.immagine}
+              />
+
+              <Text style={stili.titoloCarta}>
+                {cartaRound.title}
+              </Text>
+
+            </View>
+
+          </>
+
+        )
+      }
 
 
       <Text style={stili.sottotitolo}>
         Le Tue Carte
       </Text>
 
-      <TouchableOpacity
-        style={stili.bottonePosizione}
-        onPress={() => sceltaPosizione(0)}
-      >
+      {
+        !partitaFinita && (
 
-        <Text style={stili.testoBottone}>
-          Metti Qui
-        </Text>
+          <TouchableOpacity
+            style={stili.bottonePosizione}
+            onPress={() => sceltaPosizione(0)}
+          >
 
-      </TouchableOpacity>
+            <Text style={stili.testoBottone}>
+              Metti Qui
+            </Text>
 
+          </TouchableOpacity>
+
+        )
+      }
       {
         carteGiocatore.map((carta, index) => (
 
@@ -150,17 +249,22 @@ export default function SchermoGioco() {
               </Text>
 
             </View>
+            {
+              !partitaFinita && (
 
-            <TouchableOpacity
-              style={stili.bottonePosizione}
-              onPress={() => sceltaPosizione(index + 1)}
-            >
+                <TouchableOpacity
+                  style={stili.bottonePosizione}
+                  onPress={() => sceltaPosizione(index + 1)}
+                >
 
-              <Text style={stili.testoBottone}>
-                Metti Qui
-              </Text>
+                  <Text style={stili.testoBottone}>
+                    Metti Qui
+                  </Text>
 
-            </TouchableOpacity>
+                </TouchableOpacity>
+
+              )
+            }
 
           </View>
 
@@ -172,7 +276,6 @@ export default function SchermoGioco() {
   );
 
 }
-
 
 const stili = StyleSheet.create({
 
@@ -187,7 +290,7 @@ const stili = StyleSheet.create({
 
   titolo: {
     color: 'orange',
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
@@ -197,10 +300,10 @@ const stili = StyleSheet.create({
 
   messaggio: {
     color: 'yellow',
-    fontSize: 22,
-    textAlign: 'center',
-    marginBottom: 15,
+    fontSize: 24,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
   },
 
 
@@ -208,19 +311,29 @@ const stili = StyleSheet.create({
   errori: {
     color: 'red',
     fontSize: 20,
-    textAlign: 'center',
-    marginBottom: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+
+
+
+  carteTotali: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 30,
   },
 
 
 
   sottotitolo: {
     color: 'white',
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
     textAlign: 'center',
+    marginBottom: 20,
   },
 
 
@@ -266,11 +379,14 @@ const stili = StyleSheet.create({
     marginBottom: 10,
   },
 
+
+
   sfortunaCarta: {
     color: 'orange',
     fontSize: 18,
     fontWeight: 'bold',
   },
+
 
 
   bottonePosizione: {
@@ -280,6 +396,7 @@ const stili = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'center',
   },
+
 
 
   testoBottone: {
