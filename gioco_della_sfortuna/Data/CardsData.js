@@ -285,7 +285,7 @@ image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_K
 
 {
   id: 41,
-  title: "Ti dimentichi il testo e inventi parole senza senso",
+  title: "dici cose a caso perche hai fumato marijuana",
   image: {
     uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
@@ -348,7 +348,7 @@ image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_K
 
 {
   id: 48,
-  title: "La tua chitarra esplode durante l’assolo",
+  title: "La tua chitarra prende fuoco",
   image: {
     uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },
@@ -357,7 +357,7 @@ image: { uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_K
 
 {
   id: 49,
-  title: "Cadi dal palco davanti a tutti",
+  title: "ti rompi la testa davanti a tutti",
   image: {
     uri: "https://upload.wikimedia.org/wikipedia/commons/2/29/Machine_Gun_Kelly_Charity_Softball_%2853117851335%29crop.png"
   },

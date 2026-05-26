@@ -8,11 +8,12 @@ import {
   ScrollView,
   TouchableOpacity
 } from 'react-native';
+import Timer from '../components/timer';
 
 import datiCarte from '../Data/CardsData';
 
 export default function GameScreen({ vaiEndScreen }) {
-
+  const [tempo, setTempo] = useState(30);
 
   const [carteGiocatore, setCarteGiocatore] = useState(() => {
 
@@ -49,8 +50,11 @@ export default function GameScreen({ vaiEndScreen }) {
   }, []);
 
 
+function tempoScaduto() {
 
+  vaiEndScreen(false);
 
+}
 
 
   function generaNuovaCarta() {
@@ -64,6 +68,13 @@ export default function GameScreen({ vaiEndScreen }) {
     });
 
 
+   disponibili.sort(() => Math.random() - 0.5);
+
+  let cartaCasuale = disponibili[0];
+
+  setCartaRound(cartaCasuale);
+
+  setTempo(30);
 
 
     disponibili.sort(() => Math.random() - 0.5);
@@ -151,11 +162,20 @@ return;
 
     <ScrollView style={stili.contenitore}>
 
+    <Timer
+
+    tempo={tempo}
+    setTempo={setTempo}
+    tempoScaduto={tempoScaduto}
+
+/>
+
+ 
       <Text style={stili.titolo}>
         Gioco della Sfortuna
       </Text>
 
-
+    
 
 
       <Text style={stili.messaggio}>
