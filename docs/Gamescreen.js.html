@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Gamescreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Gamescreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from "react";
+/**
+ * Schermata principale del gioco.
+ * @module GameScreen
+ */
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import Timer from "../components/timer";
+
+import datiCarte from "../Data/CardsData";
+
+export default function GameScreen({ vaiEndScreen }) {
+  const [tempo, setTempo] = useState(30);
+
+  const [carteGiocatore, setCarteGiocatore] = useState(() => {
+    let mescolate = [...datiCarte];
+
+    mescolate.sort(() => Math.random() - 0.5);
+
+    let iniziali = mescolate.slice(0, 3);
+
+    iniziali.sort((a, b) => a.sfortuna - b.sfortuna);
+
+    return iniziali;
+  });
+
+  const [cartaRound, setCartaRound] = useState(null);
+
+  const [messaggio, setMessaggio] = useState("");
+
+  const [errori, setErrori] = useState(0);
+
+  const [partitaFinita, setPartitaFinita] = useState(false);
+
+  const [vittoria, setVittoria] = useState(false);
+
+  const dbsm_temp = "partita";
+
+  useEffect(() => {
+    generaNuovaCarta();
+  }, []);
+
+  function tempoScaduto() {
+    vaiEndScreen(false);
+  }
+
+  function generaNuovaCarta() {
+    let disponibili = datiCarte.filter((carta) => {
+      let giaUsata = carteGiocatore.some((c) => c.id === carta.id);
+
+      return !giaUsata;
+    });
+
+    disponibili.sort(() => Math.random() - 0.5);
+
+    let cartaCasuale = disponibili[0];
+
+    setCartaRound(cartaCasuale);
+
+    setTempo(30);
+
+    disponibili.sort(() => Math.random() - 0.5);
+
+    setCartaRound(disponibili[0]);
+  }
+
+  function sceltaPosizione(posizioneScelta) {
+    if (partitaFinita) {
+      return;
+    }
+
+    let posizioneCorretta = 0;
+
+    for (let i = 0; i &lt; carteGiocatore.length; i++) {
+      if (cartaRound.sfortuna > carteGiocatore[i].sfortuna) {
+        posizioneCorretta++;
+      }
+    }
+
+    if (posizioneScelta === posizioneCorretta) {
+      setMessaggio("Hai indovinato!");
+
+      let nuoveCarte = [...carteGiocatore];
+
+      nuoveCarte.splice(posizioneScelta, 0, cartaRound);
+
+      nuoveCarte.sort((a, b) => a.sfortuna - b.sfortuna);
+
+      setCarteGiocatore(nuoveCarte);
+
+      if (nuoveCarte.length === 6) {
+        vaiEndScreen(true);
+        return;
+      }
+
+      generaNuovaCarta();
+    } else {
+      let nuoviErrori = errori + 1;
+
+      setErrori(nuoviErrori);
+
+      setMessaggio("Hai sbagliato!");
+
+      if (nuoviErrori === 3) {
+        vaiEndScreen(false);
+
+        return;
+      }
+
+      generaNuovaCarta();
+    }
+  }
+
+  return (
+    &lt;ScrollView style={stili.contenitore}>
+      &lt;Timer tempo={tempo} setTempo={setTempo} tempoScaduto={tempoScaduto} />
+      &lt;Text style={stili.titolo}>Gioco della Sfortuna &lt;/Text>
+      &lt;Text style={stili.messaggio}> {messaggio} &lt;/Text>
+      &lt;Text style={stili.errori}>
+        Errori: {errori}
+        /3{" "}
+      &lt;/Text>
+      &lt;Text style={stili.carteTotali}>
+        Carte: {carteGiocatore.length}
+        /6{" "}
+      &lt;/Text>
+      {!partitaFinita &amp;&amp; cartaRound &amp;&amp; (
+        &lt;>
+          &lt;Text style={stili.sottotitolo}>Nuova Carta &lt;/Text>
+
+          &lt;View style={stili.cartaRound}>
+            &lt;Image source={cartaRound.image} style={stili.immagine} />
+
+            &lt;Text style={stili.titoloCarta}> {cartaRound.title} &lt;/Text>
+          &lt;/View>
+        &lt;/>
+      )}
+      &lt;Text style={stili.sottotitolo}>Le Tue Carte &lt;/Text>
+      {!partitaFinita &amp;&amp; (
+        &lt;TouchableOpacity
+          style={stili.bottonePosizione}
+          onPress={() => sceltaPosizione(0)}
+        >
+          &lt;Text style={stili.testoBottone}>Metti Qui &lt;/Text>
+        &lt;/TouchableOpacity>
+      )}{" "}
+      {carteGiocatore.map((carta, index) => (
+        &lt;View key={carta.id}>
+          &lt;View style={stili.carta}>
+            &lt;Image source={carta.image} style={stili.immagine} />
+
+            &lt;Text style={stili.titoloCarta}> {carta.title} &lt;/Text>
+
+            &lt;Text style={stili.sfortunaCarta}>Sfortuna: {carta.sfortuna} &lt;/Text>
+          &lt;/View>{" "}
+          {!partitaFinita &amp;&amp; (
+            &lt;TouchableOpacity
+              style={stili.bottonePosizione}
+              onPress={() => sceltaPosizione(index + 1)}
+            >
+              &lt;Text style={stili.testoBottone}>Metti Qui &lt;/Text>
+            &lt;/TouchableOpacity>
+          )}
+        &lt;/View>
+      ))}
+    &lt;/ScrollView>
+  );
+}
+
+const stili = StyleSheet.create({
+  contenitore: {
+    flex: 1,
+    backgroundColor: "#1e1e1e",
+    paddingTop: 60,
+    paddingHorizontal: 20,
+  },
+
+  titolo: {
+    color: "orange",
+    fontSize: 34,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+
+  messaggio: {
+    color: "yellow",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+
+  errori: {
+    color: "red",
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+
+  carteTotali: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 30,
+  },
+
+  sottotitolo: {
+    color: "white",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+
+  carta: {
+    backgroundColor: "#2c2c2c",
+    borderWidth: 2,
+    borderColor: "orange",
+    borderRadius: 20,
+    padding: 15,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+
+  cartaRound: {
+    backgroundColor: "#3b2a00",
+    borderWidth: 3,
+    borderColor: "yellow",
+    borderRadius: 20,
+    padding: 15,
+    marginBottom: 30,
+    alignItems: "center",
+  },
+
+  immagine: {
+    width: 250,
+    height: 180,
+    borderRadius: 20,
+    marginBottom: 15,
+  },
+
+  titoloCarta: {
+    color: "white",
+    fontSize: 22,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+
+  sfortunaCarta: {
+    color: "orange",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  bottonePosizione: {
+    backgroundColor: "orange",
+    padding: 15,
+    borderRadius: 15,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+
+  testoBottone: {
+    color: "black",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-GameScreen.html">GameScreen</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Tue May 26 2026 21:20:28 GMT+0200 (Ora legale dell’Europa centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
