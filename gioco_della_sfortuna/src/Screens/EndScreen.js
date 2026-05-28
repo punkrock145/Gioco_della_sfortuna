@@ -1,154 +1,98 @@
-import React from 'react';
+import React from "react";
 
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-export default function EndScreen({
+/**
+ * Schermata finale della partita.
+ * Mostra un messaggio diverso in caso di vittoria o sconfitta
+ * e permette di iniziare una nuova partita.
+ *
+ * @param {Object} props Proprietà del componente.
+ *
+ * @param {boolean} props.vittoria Indica se il giocatore ha vinto
+ * .
+ * @param {Function} props.restartGame Funzione che riavvia la partita.
+ * @returns {JSX.Element} Schermata finale.
+ */
 
-  vittoria,
-  restartGame
-
-}) {
-
+export default function EndScreen({ vittoria, restartGame }) {
+  /**
+   * Se vittoria è true viene mostrata la schermata di vittoria,
+   * altrimenti viene mostrata la schermata di sconfitta.
+   */
   return (
-
     <View style={stili.container}>
-
-
       <Image
-
         source={{
           uri: vittoria
-
-          ? 'https://i.pinimg.com/736x/9d/1c/6e/9d1c6e003e24190e3a19a2c5f2956c40.jpg'
-
-          : 'https://i.pinimg.com/736x/fd/fa/9c/fdfa9c711272ee81446dd9d0923d8c32.jpg'
+            ? "https://i.pinimg.com/736x/9d/1c/6e/9d1c6e003e24190e3a19a2c5f2956c40.jpg"
+            : "https://i.pinimg.com/736x/fd/fa/9c/fdfa9c711272ee81446dd9d0923d8c32.jpg",
         }}
-
         style={stili.sfondo}
-
-      />
-
-
-
-
-
+      />{" "}
       <View style={stili.overlay}>
-
-
         <Text style={stili.titolo}>
-
-          {
-            vittoria
-            ? "HAI VINTO!"
-            : "GAME OVER"
-          }
-
-        </Text>
-
-
-<Text style={stili.sottotitolo}>
-
-  {
-    vittoria
-    ? "Vuoi vincere ancora? ↓ Premi qui 😎🔥"
-    : "Hai fatto troppi errori 😵 Vuoi riprovarci? ↓"
-  }
-
-</Text>
-
-
-
-
-
-
-        <TouchableOpacity
-          style={stili.bottone}
-          onPress={restartGame}
-        >
-
-          <Text style={stili.testoBottone}>
-            GIOCA DI NUOVO
-          </Text>
-
-        </TouchableOpacity>
-
-      </View>
-
+          {" "}
+          {vittoria ? "HAI VINTO!" : "GAME OVER"}{" "}
+        </Text>{" "}
+        <Text style={stili.sottotitolo}>
+          {" "}
+          {vittoria
+            ? "Vuoi vincere ancora? ↓ Premi qui 😎🔥"
+            : "Hai fatto troppi errori 😵 Vuoi riprovarci? ↓"}{" "}
+        </Text>{" "}
+        <TouchableOpacity style={stili.bottone} onPress={restartGame}>
+          <Text style={stili.testoBottone}> GIOCA DI NUOVO </Text>{" "}
+        </TouchableOpacity>{" "}
+      </View>{" "}
     </View>
-
   );
-
 }
 
-
-
-
-
-
 const stili = StyleSheet.create({
-
   container: {
     flex: 1,
   },
 
-
-
   sfondo: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
-
-
 
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.7)",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
 
-
-
   titolo: {
-    color: 'orange',
+    color: "orange",
     fontSize: 45,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 30,
-    textAlign: 'center',
+    textAlign: "center",
   },
 
-
-
   sottotitolo: {
-    color: 'white',
+    color: "white",
     fontSize: 22,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 50,
   },
 
-
-
   bottone: {
-    backgroundColor: 'orange',
+    backgroundColor: "orange",
     paddingVertical: 18,
     paddingHorizontal: 40,
     borderRadius: 20,
   },
 
-
-
   testoBottone: {
-    color: 'black',
+    color: "black",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-
 });

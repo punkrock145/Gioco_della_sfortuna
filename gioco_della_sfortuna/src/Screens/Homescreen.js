@@ -1,131 +1,93 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image
-} from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+
+/**
+ * Schermata iniziale del gioco.
+ * Permette all'utente di avviare una nuova partita.
+ *
+ * @param {Object} props Proprietà del componente.
+ * @param {Function} props.cambiaSchermata Funzione che apre la schermata di gioco.
+ * @returns {JSX.Element} Schermata Home.
+ */
 
 export default function HomeScreen({ cambiaSchermata }) {
-
   return (
-
     <View style={stili.container}>
-
       <Image
         source={{
-          uri: 'https://i.etsystatic.com/8431379/r/il/539735/755305151/il_1588xN.755305151_4q4b.jpg'
+          uri: "https://i.etsystatic.com/8431379/r/il/539735/755305151/il_1588xN.755305151_4q4b.jpg",
         }}
         style={stili.sfondo}
       />
 
-
-
       <View style={stili.overlay}>
+        <Text style={stili.titolo}>GIOCO </Text>
 
-        <Text style={stili.titolo}>
-          GIOCO
-        </Text>
+        <Text style={stili.titolo2}>DELLA SFORTUNA </Text>
 
-        <Text style={stili.titolo2}>
-          DELLA SFORTUNA
-        </Text>
+        <Text style={stili.sottotitolo}>Edition Music Disaster </Text>
 
-        <Text style={stili.sottotitolo}>
-          Edition Music Disaster
-        </Text>
-
-
-
-
-        <TouchableOpacity
-          style={stili.bottone}
-          onPress={cambiaSchermata}
-        >
-
-          <Text style={stili.testoBottone}>
-            INIZIA PARTITA
-          </Text>
-
+        <TouchableOpacity style={stili.bottone} onPress={cambiaSchermata}>
+          <Text style={stili.testoBottone}>INIZIA PARTITA </Text>
         </TouchableOpacity>
-
       </View>
-
     </View>
-
   );
-
 }
 
-
+/**
+ * Insieme degli stili grafici della schermata Home.
+ */
 
 const stili = StyleSheet.create({
-
   container: {
     flex: 1,
   },
 
-
-
   sfondo: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
   },
-
-
 
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.7)",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
 
-
-
   titolo: {
-    color: 'orange',
+    color: "orange",
     fontSize: 55,
-    fontWeight: 'bold',
-  
+    fontWeight: "bold",
   },
-
-
 
   titolo2: {
-    color: 'white',
+    color: "white",
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: "center",
   },
 
-
-
   sottotitolo: {
-    color: '#cccccc',
+    color: "#cccccc",
     fontSize: 18,
     marginBottom: 60,
   },
 
-
-
   bottone: {
-    backgroundColor: 'orange',
+    backgroundColor: "orange",
     paddingVertical: 18,
     paddingHorizontal: 40,
     borderRadius: 20,
   },
 
-
-
   testoBottone: {
-    color: 'black',
+    color: "black",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-
 });

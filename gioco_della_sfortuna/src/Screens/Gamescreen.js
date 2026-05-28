@@ -13,6 +13,16 @@ import Timer from "../components/timer";
 
 import datiCarte from "../Data/CardsData";
 
+/**
+ * Schermata principale del gioco.
+ * Gestisce la logica della partita, il timer, gli errori
+ * e il controllo delle carte del giocatore.
+ *
+ * @param {Object} props Proprietà del componente.
+ * @param {Function} props.vaiEndScreen Funzione che apre la schermata finale.
+ * @returns {JSX.Element} Schermata di gioco.
+ */
+
 export default function GameScreen({ vaiEndScreen }) {
   const [tempo, setTempo] = useState(30);
 
@@ -34,18 +44,27 @@ export default function GameScreen({ vaiEndScreen }) {
     iniziali.sort((a, b) => a.sfortuna - b.sfortuna);
     return iniziali;
   });
-
+  /**
+   * All'avvio della schermata genera la prima carta del round.
+   */
   useEffect(() => {
     generaNuovaCarta();
   }, []);
-
+  /**
+   * Gestisce la scadenza del timer.
+   * Se il tempo termina la partita viene persa.
+   */
   function tempoScaduto() {
     vaiEndScreen(false);
   }
-
+  /**
+   * Seleziona casualmente una nuova carta tra quelle
+   * non ancora utilizzate durante la partita.
+   */
   function generaNuovaCarta() {
     let disponibili = datiCarte.filter((carta) => {
       let giaUsata = carteGiocatore.some((c) => c.id === carta.id);
+
       return !giaUsata;
     });
 
@@ -56,10 +75,17 @@ export default function GameScreen({ vaiEndScreen }) {
     }
 
     disponibili.sort(() => Math.random() - 0.5);
+
     setCartaRound(disponibili[0]);
+
     setTempo(30);
   }
-
+  /**
+   * Verifica la posizione scelta dal giocatore
+   * e aggiorna lo stato della partita.
+   *
+   * @param {number} posizioneScelta Posizione selezionata dal giocatore.
+   */
   function sceltaPosizione(posizioneScelta) {
     if (partitaFinita) return;
 
@@ -82,13 +108,16 @@ export default function GameScreen({ vaiEndScreen }) {
 
       if (nuoveCarte.length === 6) {
         vaiEndScreen(true);
+
         return;
       }
 
       generaNuovaCarta();
     } else {
       let nuoviErrori = errori + 1;
+
       setErrori(nuoviErrori);
+
       setMessaggio("Hai sbagliato!");
 
       if (nuoviErrori === 3) {
@@ -102,19 +131,19 @@ export default function GameScreen({ vaiEndScreen }) {
 
   return (
     <ScrollView style={stili.contenitore}>
-      <Timer tempo={tempo} setTempo={setTempo} tempoScaduto={tempoScaduto} />
+      <Timer tempo={tempo} setTempo={setTempo} tempoScaduto={tempoScaduto} />{" "}
       <Text style={stili.titolo}> Gioco della Sfortuna </Text>{" "}
       <Text style={stili.messaggio}> {messaggio} </Text>{" "}
       <Text style={stili.errori}>
         {" "}
         Errori: {errori}
-        /3
-      </Text>
+        /3{" "}
+      </Text>{" "}
       <Text style={stili.carteTotali}>
         {" "}
         Carte: {carteGiocatore.length}
-        /6
-      </Text>
+        /6{" "}
+      </Text>{" "}
       {!partitaFinita && cartaRound && (
         <>
           <Text style={stili.sottotitolo}> Nuova Carta </Text>{" "}
@@ -123,8 +152,8 @@ export default function GameScreen({ vaiEndScreen }) {
             <Text style={stili.titoloCarta}> {cartaRound.title} </Text>{" "}
           </View>{" "}
         </>
-      )}
-      <Text style={stili.sottotitolo}> Le Tue Carte </Text>
+      )}{" "}
+      <Text style={stili.sottotitolo}> Le Tue Carte </Text>{" "}
       {!partitaFinita && (
         <TouchableOpacity
           style={stili.bottonePosizione}
@@ -132,12 +161,12 @@ export default function GameScreen({ vaiEndScreen }) {
         >
           <Text style={stili.testoBottone}> Metti Qui </Text>{" "}
         </TouchableOpacity>
-      )}
+      )}{" "}
       {carteGiocatore.map((carta, index) => (
         <View key={carta.id}>
           <View style={stili.carta}>
-            <Image source={carta.image} style={stili.immagine} />
-            <Text style={stili.titoloCarta}> {carta.title} </Text>
+            <Image source={carta.image} style={stili.immagine} />{" "}
+            <Text style={stili.titoloCarta}> {carta.title} </Text>{" "}
             <Text style={stili.sfortunaCarta}>
               {" "}
               Sfortuna: {carta.sfortuna}{" "}
