@@ -19,18 +19,14 @@ export default function HomeScreen({ cambiaSchermata }) {
         }}
         style={stili.sfondo}
       />
-
       <View style={stili.overlay}>
-        <Text style={stili.titolo}>GIOCO </Text>
-
-        <Text style={stili.titolo2}>DELLA SFORTUNA </Text>
-
-        <Text style={stili.sottotitolo}>Edition Music Disaster </Text>
-
+        <Text style={stili.titolo}> GIOCO </Text>
+        <Text style={stili.titolo2}> DELLA SFORTUNA </Text>
+        <Text style={stili.sottotitolo}> Edition Music Disaster </Text>
         <TouchableOpacity style={stili.bottone} onPress={cambiaSchermata}>
-          <Text style={stili.testoBottone}>INIZIA PARTITA </Text>
-        </TouchableOpacity>
-      </View>
+          <Text style={stili.testoBottone}> INIZIA PARTITA </Text>{" "}
+        </TouchableOpacity>{" "}
+      </View>{" "}
     </View>
   );
 }

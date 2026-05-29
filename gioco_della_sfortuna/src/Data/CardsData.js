@@ -1,3 +1,15 @@
+/**
+ * Collezione delle situazioni sfortunate utilizzate nel gioco.
+ *
+ * Struttura di una carta:
+ * - id: identificativo univoco
+ * - title: nome della situazione
+ * - image: immagine rappresentativa
+ * - sfortuna: valore da 1 a 100
+ *
+ * @type {Array<Object>}
+ */
+
 const cardsData = [
   {
     id: 1,
